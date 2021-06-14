@@ -1,6 +1,9 @@
 # Local history
 .history
 
+# node lock file
+package-lock.json
+
 # Logs
 logs
 *.log
