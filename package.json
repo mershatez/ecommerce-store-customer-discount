@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/mershatez/ecommerce-store-customer-discount/issues"
   },
-  "homepage": "https://github.com/mershatez/ecommerce-store-customer-discount#readme"
+  "homepage": "https://github.com/mershatez/ecommerce-store-customer-discount#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
