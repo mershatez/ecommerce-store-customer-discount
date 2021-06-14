@@ -1,0 +1,20 @@
+{
+  "name": "ecommerce-store-customer-discount",
+  "version": "1.0.0",
+  "description": "This is a simple ecommerce store service that allows a store owner to give discounts to customers based on nth transactions. Customers will be able to see if they have discounts and make purchases with our without discounts.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mershatez/ecommerce-store-customer-discount.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mershatez/ecommerce-store-customer-discount/issues"
+  },
+  "homepage": "https://github.com/mershatez/ecommerce-store-customer-discount#readme"
+}
