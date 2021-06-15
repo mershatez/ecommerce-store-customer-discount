@@ -8,5 +8,47 @@
             "name": "....using MIT license",
             "url": "https://opensource.org/licenses/MIT"
         }
-    }
+    },
+    "paths": {
+      "/discounts": {
+          "get": {
+              "tags": [
+                  "Discounts"
+              ],
+              "summary": "Get all discounts in system",
+              "responses": {
+                  "200": {
+                      "description": "OK",
+                      "schema": {
+                          "$ref": "#/definitions/Discounts"
+                      }
+                  }
+              }
+          }
+      }
+  },
+    "definitions": {
+        "Discount": {
+          "type": "object",
+          "properties": {
+            "transactionNumber": {
+              "type": "number"
+            },
+            "code": {
+              "type": "string"
+            }
+          }
+        },
+        "Discounts": {
+          "type": "object",
+          "properties": {
+            "discounts": {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/definitions/Discount"
+              }
+            }
+          }
+        }
+      }
 }
