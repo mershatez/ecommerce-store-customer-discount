@@ -15,13 +15,13 @@ export const createNewDiscount = function (req: express.Request, res: express.Re
     try {
         let newDiscount: Discount = {} as Discount;
         Object.assign(newDiscount, req.body);
-        storeDiscounts[newDiscount.transactionNumber]=newDiscount;                
+        storeDiscounts[newDiscount.transactionNumber]=newDiscount;               
         res.json({
             newDiscount
         })
     } catch (e) {
         log.error(e);
-        res.status(400).send(JSON.stringify({ "error": "problem with posted data" }));
+        res.status(400).send("Could not create new discounts");
     }
 }
 //display report
