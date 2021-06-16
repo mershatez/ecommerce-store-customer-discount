@@ -43,7 +43,7 @@ The service has the following endpoints.
 
 I) For Owner
 
-1. To see a report which will list all transactions and discounts used
+1. To see a total number of transacitons made, total number of discounts used and, list all transactions
    - Using swagger - http://localhost:3000/report 
    - Using CURL - (curl -X 'GET' \ 'http://localhost:3000/report' \ -H 'accept: application/json')
 2. To see discounts

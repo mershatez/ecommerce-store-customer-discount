@@ -34,6 +34,27 @@ class Router {
             getReport(req,res,storeTransactions);
         });
 
+ 
+        //FOR CUSTOMER       
+        //gets available discount
+        router.get('/available/discount', cors(), (req: express.Request, res: express.Response) => {
+            getAvailableDiscount(req,res,storeDiscounts,currentTransactionNumber);
+        });
+        //purchase with discount
+        router.post('/purchase/:code', cors(), (req: express.Request, res: express.Response) => {
+            purchaseWithDiscount(req,res,storeDiscounts,currentTransactionNumber, storeTransactions);
+        })
+        //purchase without discount
+        router.post('/purchase', cors(), (req: express.Request, res: express.Response) => {
+            purchaseWithoutDiscount(req,res,currentTransactionNumber, storeTransactions);
+        });
+        //DEFAULT
+        router.get('/', (req: express.Request, res: express.Response) => {
+            log.info("Root was called");
+            res.json({
+                message: `App is up and running`
+            }) 
+        })
         router.options('*', cors());
 
         server.use('/', router)

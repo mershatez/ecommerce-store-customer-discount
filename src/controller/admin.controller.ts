@@ -26,8 +26,23 @@ export const createNewDiscount = function (req: express.Request, res: express.Re
 }
 //display report
 export const getReport = function (req: express.Request, res: express.Response, storeTransactions = new Array<Transaction>()){
-    log.info('Getting all of store transactions')
+    log.info('Getting all of store transactions, total number of transactions and, total number of discounts used')
+    let report: string = "No transaction was made";
+    let totalNumberOfDiscountsUsed: number = 0;
+    if(storeTransactions){
+        log.info("Getting the total number of discounts used");
+        storeTransactions.forEach(transaction =>{
+            if('discount' in transaction){
+                totalNumberOfDiscountsUsed++;
+            }
+        });
+        report = ["Total number of transactions made : ", 
+        storeTransactions.length, 
+        "Total number of discounts used : ",
+        totalNumberOfDiscountsUsed,
+        JSON.stringify(storeTransactions)].join(' '); 
+    }
     res.json({
-        storeTransactions
-    })
+        report
+    });
 }
