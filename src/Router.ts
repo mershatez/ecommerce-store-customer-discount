@@ -29,6 +29,10 @@ class Router {
             createNewDiscount(req,res,storeDiscounts);
         });
 
+        //display report
+        router.get('/report', cors(), (req: express.Request, res: express.Response) => {
+            getReport(req,res,storeTransactions);
+        });
 
         router.options('*', cors());
 
