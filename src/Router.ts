@@ -22,15 +22,18 @@ class Router {
         //FOR ADMIN/OWNER
         //get all discounts
         router.get('/discounts', cors(), (req: express.Request, res: express.Response) => {
+            log.info("Routing get discount");
             getDiscounts(req,res,storeDiscounts);
         });
         //create new discounts 
         router.post('/new/discount', cors(), (req: express.Request, res: express.Response) => {
+            log.info("Routing get new discount");
             createNewDiscount(req,res,storeDiscounts);
         });
 
         //display report
         router.get('/report', cors(), (req: express.Request, res: express.Response) => {
+            log.info("Routing get report");
             getReport(req,res,storeTransactions);
         });
 
@@ -38,14 +41,17 @@ class Router {
         //FOR CUSTOMER       
         //gets available discount
         router.get('/available/discount', cors(), (req: express.Request, res: express.Response) => {
+            log.info("Routing get available discount");
             getAvailableDiscount(req,res,storeDiscounts,currentTransactionNumber);
         });
         //purchase with discount
         router.post('/purchase/:code', cors(), (req: express.Request, res: express.Response) => {
+            log.info("Routing purchase with discount");
             purchaseWithDiscount(req,res,storeDiscounts,currentTransactionNumber, storeTransactions);
         })
         //purchase without discount
         router.post('/purchase', cors(), (req: express.Request, res: express.Response) => {
+            log.info("Routing purchase without discount");
             purchaseWithoutDiscount(req,res,currentTransactionNumber, storeTransactions);
         });
         //DEFAULT
