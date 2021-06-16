@@ -1,0 +1,43 @@
+{
+  "name": "ecommerce-store-customer-discount",
+  "version": "1.0.0",
+  "description": "This is a simple ecommerce store service that allows a store owner to give discounts to customers based on nth transactions. Customers will be able to see if they have discounts and make purchases with our without discounts.",
+  "main": "dist/server.js",
+  "scripts": {
+    "start": "tsc && node dist/src/server.js",
+    "build": "tsc",
+    "dev": "concurrently --kill-others \"tsc -w\" \"nodemon dist/src/server.js\"",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mershatez/ecommerce-store-customer-discount.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mershatez/ecommerce-store-customer-discount/issues"
+  },
+  "homepage": "https://github.com/mershatez/ecommerce-store-customer-discount#readme",
+  "dependencies": {
+    "@types/cors": "^2.8.5",
+    "@types/jest": "^26.0.23",
+    "concurrently": "^6.2.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "jest": "^27.0.4",
+    "jest-mock-extended": "^1.0.16",
+    "swagger-ui-express": "^4.1.6",
+    "ts-jest": "^27.0.3",
+    "tslog": "^3.2.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.10",
+    "@types/swagger-ui-express": "^4.1.2",
+    "@types/uuid": "^8.3.0",
+    "concurrently": "^2.2.0",
+    "nodemon": "^2.0.7",
+    "typescript": "^4.3.2"
+  }
+}
