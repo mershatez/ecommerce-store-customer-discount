@@ -1,54 +1,236 @@
 {
-    "swagger": "2.0",
-    "info": {
-        "version": "2.0.0",
-        "title": "Ecommerce Store Customer Discount Service",
-        "description": "A simple API to customer discount service",
-        "license": {
-            "name": "....using MIT license",
-            "url": "https://opensource.org/licenses/MIT"
-        }
-    },
-    "paths": {
-      "/discounts": {
-          "get": {
-              "tags": [
-                  "Discounts"
-              ],
-              "summary": "Get all discounts in system",
-              "responses": {
-                  "200": {
-                      "description": "OK",
-                      "schema": {
-                          "$ref": "#/definitions/Discounts"
-                      }
-                  }
-              }
-          }
-      }
+  "swagger": "2.0",
+  "info": {
+    "version": "2.0.0",
+    "title": "Ecommerce Store Customer Discount Service",
+    "description": "A simple API to customer discount service",
+    "license": {
+      "name": "....Tez using MIT license",
+      "url": "https://opensource.org/licenses/MIT"
+    }
   },
-    "definitions": {
-        "Discount": {
-          "type": "object",
-          "properties": {
-            "transactionNumber": {
-              "type": "number"
-            },
-            "code": {
-              "type": "string"
-            }
-          }
-        },
-        "Discounts": {
-          "type": "object",
-          "properties": {
-            "discounts": {
-              "type": "object",
-              "additionalProperties": {
-                "$ref": "#/definitions/Discount"
-              }
+  "paths": {
+    "/available/discount": {
+      "get": {
+        "tags": [
+          "Customer"
+        ],
+        "summary": "Show discount if available",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Discount"
             }
           }
         }
       }
+    },
+    "/report": {
+      "get": {
+        "tags": [
+          "Owner"
+        ],
+        "summary": "Get all of store transactions",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/StoreTransactions"
+            }
+          }
+        }
+      }
+    },
+    "/discounts": {
+      "get": {
+        "tags": [
+          "Owner"
+        ],
+        "summary": "Get all of discounts in the store",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Discounts"
+            }
+          }
+        }
+      }
+    },
+    "/new/discount": {
+      "post": {
+        "tags": [
+          "Owner"
+        ],
+        "summary": "Create a new Discount",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Pet object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Discount"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Discount"
+            }
+          },
+          "404": {
+            "description": "Failed. Transaction not found."
+          }
+        }
+      }
+    },
+    "/purchase/{code}": {
+      "parameters": [
+        {
+          "name": "code",
+          "in": "path",
+          "required": true,
+          "description": "Discount code to be used",
+          "type": "string"
+        }
+      ],
+      "post": {
+        "tags": [
+          "Customer"
+        ],
+        "summary": "Purchase without a discount",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Purchase without a discount",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Transaction"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Transaction"
+            }
+          },
+          "404": {
+            "description": "Failed. Transaction not found."
+          }
+        }
+      }
+    },
+    "/purchase": {
+      "post": {
+        "tags": [
+          "Customer"
+        ],
+        "summary": "Purchase without a discount",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Purchase without a discount",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Transaction"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Transaction"
+            }
+          },
+          "404": {
+            "description": "Failed. Transaction not found."
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "code": {
+      "type": "string"
+    },
+    "Person": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "Item": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "Items": {
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "object",  
+          "$ref": "#/definitions/Item"
+        }
+      }
+    },
+    "Discount": {
+      "type": "object",
+      "properties": {
+        "transactionNumber": {
+          "type": "number"
+        },
+        "code": {
+          "type": "string"
+        }
+      }
+    },   
+    "Transaction": {
+      "type": "object",
+      "properties": {
+          "customer":{
+            "type": "object",
+            "$ref": "#/definitions/Person"
+          },
+          "items": {
+            "$ref": "#/definitions/Items"
+          }
+      }
+    },
+    "StoreTransactions": {
+      "type": "object",
+      "properties": {
+        "discounts": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/Transaction"
+          }
+        }
+      }
+    },
+    "Discounts": {
+      "type": "object",
+      "properties": {
+        "discounts": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/Discount"
+          }
+        }
+      }
+    }        
+  }
 }
