@@ -47,12 +47,12 @@ class Router {
         //purchase with discount
         router.post('/purchase/:code', cors(), (req: express.Request, res: express.Response) => {
             log.info("Routing purchase with discount");
-            purchaseWithDiscount(req,res,storeDiscounts,currentTransactionNumber, storeTransactions);
+            purchaseWithDiscount(req,res,storeDiscounts,currentTransactionNumber++, storeTransactions);
         })
         //purchase without discount
         router.post('/purchase', cors(), (req: express.Request, res: express.Response) => {
             log.info("Routing purchase without discount");
-            purchaseWithoutDiscount(req,res,currentTransactionNumber, storeTransactions);
+            purchaseWithoutDiscount(req,res,currentTransactionNumber++, storeTransactions);
         });
         //DEFAULT
         router.get('/', (req: express.Request, res: express.Response) => {
