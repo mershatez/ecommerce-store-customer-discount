@@ -65,6 +65,9 @@ II) For Customer
    - Using swagger - http://localhost:3000/purchase/{code}
    - Using CURL - (curl -X 'POST' \ 'http://localhost:3000/purchase/{code}' \ -H 'accept: application/json' \ -H 'Content-Type: application/json' \ -d '{ "customer": { "name": "string" }, "items": { "items": { "name": "string" } } }')
 
+    Here is what the swagger looks like
+    ![image](https://user-images.githubusercontent.com/85791676/122498501-16db7780-cfa4-11eb-8eab-298be756ab15.png)
+
 
 I wanted to apply typescript concurrency to purchase requests but I need to read more about it before being comfortable in using it properly since this is my first time ever to use typescript. I read about Promises but still need to dig a little deeper. 
  
